@@ -1,108 +1,55 @@
-# 🏆 Placar Remoto Flet
+# 🏆 Placar Remoto - Controle de Pontuação Inteligente
 
-O **Placar** é uma aplicação interativa e multiplataforma desenvolvida em Python utilizando o framework **Flet** (baseado em Flutter). Projetado especialmente para quadras, arenas ou jogos casuais, o aplicativo permite gerenciar pontuações de partidas em tempo real e oferece controle remoto via Bluetooth e narração automatizada.
-
----
-
-## ✨ Principais Recursos
-
-*   **🎮 Controle Remoto via Bluetooth (BT):**
-    *   Suporte a botões remotos Bluetooth de 3 botões (como botões de selfie ou controles de mídia).
-    *   **Botão Next:** Pontuação para o Time B (Time Rosa).
-    *   **Botão Prev:** Pontuação para o Time A (Time Azul).
-    *   **Botão Click:** Alterna entre Play e Pause no cronômetro/partida.
-    *   **Botão Play:** Confirma ações ou reinicia a partida.
-    *   *Badge* dinâmico de status indicando se o Bluetooth está pareado ou aguardando sinal.
-*   **🗣️ Narração por Voz (Text-to-Speech - TTS):**
-    *   Anuncia pontuações e eventos de jogo por voz em tempo real.
-    *   Controle total de velocidade da fala, tom de voz (pitch) e seleção do sintetizador nativo do dispositivo.
-    *   Opção de recuperar automaticamente o foco de mídia para garantir que as narrações não sejam interrompidas.
-*   **📊 Histórico Local de Partidas:**
-    *   Gravação automática do resultado das partidas finalizadas no arquivo `matches_history.json`.
-    *   Salvamento 100% off-line e focado na privacidade do usuário.
-*   **⚙️ Painel de Configurações:**
-    *   Personalização completa dos nomes dos times.
-    *   Configurações persistentes salvas localmente no arquivo `app_settings.json`.
-*   **📱 Multiplataforma:**
-    *   Funciona de forma responsiva em Celulares (Android, iOS), Computadores (Windows, macOS, Linux) e Web.
+O **Placar** é um aplicativo moderno, intuitivo e multiplataforma projetado para gerenciar e narrar partidas esportivas de forma simples e eficiente. Ideal para quadras, arenas esportivas, escolas, clubes ou jogos casuais com amigos, o aplicativo elimina a necessidade de marcação manual complexa, oferecendo integração com controle sem fio via Bluetooth e narração por voz automatizada.
 
 ---
 
-## 🛠️ Requisitos e Configuração
+## ✨ Principais Funcionalidades
 
-Esta aplicação utiliza o gerenciador de pacotes moderno **uv** para gerenciar dependências de forma rápida e isolada.
+### 🎮 Controle Remoto via Bluetooth (Sem Fios)
+Gerencie o andamento do jogo sem precisar tocar na tela do celular ou computador. O aplicativo é compatível com pequenos controles remotos Bluetooth comuns (como botões de selfie ou controles de mídia de 3 botões):
+*   **Adicionar pontos:** Controle a pontuação de ambos os times com botões dedicados.
+*   **Controle da partida:** Inicie ou pause o tempo de jogo diretamente do controle remoto.
+*   **Confirmação rápida:** Confirme alterações ou reinicie o placar com atalhos simples.
 
-### Pré-requisitos
-*   **Python:** versão `3.10` ou superior.
-*   **uv:** Gerenciador de dependências instalado. (Se não possuir o `uv`, instale-o seguindo as instruções oficiais ou utilize o `pip`).
+### 🗣️ Narração Inteligente em Tempo Real (Text-to-Speech)
+O aplicativo conta com um assistente de voz nativo que narra as pontuações e o andamento da partida em tempo real.
+*   **Foco no jogo:** Os jogadores e a torcida sabem o placar exato sem precisar olhar para a tela.
+*   **Customização:** Ajuste a velocidade da fala, o tom de voz (pitch) e selecione diferentes vozes nativas do seu dispositivo.
 
----
+### 📊 Histórico e Estatísticas Locais
+Acompanhe os resultados das rodadas anteriores com o registro automático das partidas. Todos os placares finalizados são consolidados em um histórico de partidas acessível de dentro do próprio aplicativo.
 
-## 🚀 Como Executar o Aplicativo
-
-### 1. Clonar o repositório e navegar até a pasta:
-```bash
-git clone https://github.com/geanferreira96/placar.git
-cd placar
-```
-
-### 2. Executar como Aplicativo Desktop:
-```bash
-uv run flet run
-```
-
-### 3. Executar como Aplicação Web:
-```bash
-uv run flet run --web
-```
+### ⚙️ Altamente Personalizável
+*   Altere o nome dos times de forma dinâmica.
+*   Ajuste as regras de pontuação padrão.
+*   Interface escura otimizada para alta visibilidade sob luz solar ou ambientes fechados.
 
 ---
 
-## 📦 Como Compilar/Gerar Pacotes de Distribuição
+## 🔒 Privacidade e Segurança (Foco no Usuário)
 
-O Flet permite compilar seu aplicativo de forma nativa para todas as principais plataformas. Utilize os comandos abaixo conforme a sua necessidade:
+Nós acreditamos na privacidade dos seus dados. O Placar foi construído utilizando a filosofia **Local-First**:
+*   **Zero Coleta de Dados:** Não exigimos criação de contas, login ou fornecimento de e-mails para o uso do aplicativo.
+*   **100% Off-line:** O aplicativo não se conecta a servidores externos nem transmite seus dados de uso. Tudo é processado e armazenado de forma estrita e segura no seu próprio dispositivo.
+*   **Permissões Transparentes:** Apenas solicitamos acesso ao Bluetooth e áudio para execução das ferramentas do app.
 
-### 🤖 Android (Gera o arquivo `.apk` ou `.aab`)
-```bash
-flet build apk -v
-```
-*Consulte o [Guia de Empacotamento Android](https://flet.dev/docs/publish/android/) para assinar seu APK de produção.*
-
-### 🍏 iOS
-```bash
-flet build ipa -v
-```
-*Consulte o [Guia de Empacotamento iOS](https://flet.dev/docs/publish/ios/) para detalhes de provisionamento.*
-
-### 💻 Windows
-```bash
-flet build windows -v
-```
-
-### 🍎 macOS
-```bash
-flet build macos -v
-```
-
-### 🐧 Linux
-```bash
-flet build linux -v
-```
-
-### 🌐 Web
-```bash
-flet build web -v
-```
+A nossa política de privacidade completa está disponível em formato público [aqui](privacy.html).
 
 ---
 
-## 🔒 Política de Privacidade
+## 🛠️ Tecnologia
 
-O aplicativo Placar segue uma política estrita de privacidade local e off-line. Detalhes completos sobre o tratamento de dados (como o uso do Bluetooth e do armazenamento local) estão disponíveis no documento **[Política de Privacidade](privacy.html)** localizado na raiz do projeto.
+O Placar é desenvolvido em **Python** utilizando o framework **Flet** (alimentado pelo motor gráfico do **Flutter**). Isso garante uma experiência nativa fluida, transições rápidas e alta responsividade em múltiplos sistemas operacionais, incluindo:
+*   **Mobile:** Android e iOS
+*   **Desktop:** Windows, macOS e Linux
+*   **Web:** Acessível diretamente pelo navegador
 
 ---
 
-## 🛡️ Licença e Direitos Autorais
+## ✉️ Contato e Suporte
 
-*   **Desenvolvedor:** Gean Ferreira (gean.marcos96@gmail.com)
-*   **Copyright:** Copyright (C) 2023-2026 por Flet / GF Solutions. Todos os direitos reservados.
+Tem alguma sugestão de melhoria, feedback ou encontrou algum problema? Entre em contato com o desenvolvedor:
+
+*   **Desenvolvedor:** Gean Ferreira
+*   **E-mail:** [gean.marcos96@gmail.com](mailto:gean.marcos96@gmail.com)
