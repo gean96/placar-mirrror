@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Placar Remoto - O marcador de pontuação inteligente controlado por Bluetooth e com narração por voz em tempo real.">
+    <meta name="description" content="Placar Remoto - Marcador de pontuação inteligente controlado por Bluetooth (controle ou smartwatch) e com narração por voz em tempo real.">
     <title>Placar Remoto - Marcador de Pontuação Inteligente</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +29,7 @@
             --accent-pink: #ec4899;
             --accent-pink-gradient: linear-gradient(135deg, #f472b6 0%, #db2777 100%);
             --accent-blue-gradient: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+            --accent-green: #34d399;
             --glow-color: rgba(99, 102, 241, 0.2);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -68,15 +71,12 @@
             gap: 0.75rem;
             text-decoration: none;
         }
-        .logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
+        .logo-img {
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
-            background: var(--primary-gradient);
-            box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.4);
+            object-fit: cover;
+            box-shadow: 0 8px 16px -4px rgba(52, 211, 153, 0.35);
         }
         .logo-text {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -132,14 +132,122 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--primary-light);
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            color: var(--accent-green);
             padding: 0.35rem 1rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 2rem;
+        }
+        .btn-playstore {
+            background: #ffffff;
+            color: #111827;
+            box-shadow: 0 12px 24px -8px rgba(255, 255, 255, 0.25);
+            border: none;
+        }
+        .btn-playstore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -4px rgba(255, 255, 255, 0.35);
+            background: #f3f4f6;
+        }
+        .btn-playstore svg {
+            flex-shrink: 0;
+        }
+        .smartwatch-highlight {
+            margin-top: 1.75rem;
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            max-width: 520px;
+            padding: 1rem 1.15rem;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.12) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(52, 211, 153, 0.28);
+            text-align: left;
+        }
+        .smartwatch-highlight strong {
+            display: block;
+            color: #ffffff;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+        .smartwatch-highlight span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+        .feature-card.featured {
+            border-color: rgba(52, 211, 153, 0.35);
+            background: linear-gradient(160deg, rgba(52, 211, 153, 0.08) 0%, var(--card-bg) 55%);
+            position: relative;
+        }
+        .feature-card.featured::after {
+            content: "DESTAQUE";
+            position: absolute;
+            top: 1.1rem;
+            right: 1.1rem;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: var(--accent-green);
+            background: rgba(52, 211, 153, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+        }
+        .feature-icon.watch {
+            background: rgba(52, 211, 153, 0.12);
+            color: var(--accent-green);
+        }
+        .watch-mockup {
+            width: 72px;
+            height: 88px;
+            border-radius: 18px;
+            background: linear-gradient(160deg, #1e293b, #0f172a);
+            border: 2px solid rgba(52, 211, 153, 0.45);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px rgba(52, 211, 153, 0.15);
+            z-index: 2;
+            position: relative;
+            margin-right: 1.25rem;
+        }
+        .watch-mockup::before,
+        .watch-mockup::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 10px;
+            background: #334155;
+            border-radius: 4px;
+        }
+        .watch-mockup::before { top: -8px; }
+        .watch-mockup::after { bottom: -8px; }
+        .watch-screen {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #020617;
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .devices-row {
+            display: flex;
+            align-items: center;
+            z-index: 2;
         }
         h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -560,6 +668,11 @@
             .hero-ctas {
                 justify-content: center;
             }
+            .smartwatch-highlight {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: left;
+            }
             h1 {
                 font-size: 2.75rem;
             }
@@ -570,6 +683,11 @@
             }
             .bt-visual-container {
                 order: -1;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+            .phone-mockup {
+                margin-left: 0 !important;
             }
         }
         @media (max-width: 576px) {
@@ -586,31 +704,40 @@
     <!-- Header Navigation -->
     <nav>
         <a href="#" class="logo">
-            <div class="logo-box">
-                <span class="logo-text" style="font-size: 1.25rem; font-weight: 800;">P</span>
-            </div>
+            <img src="assets/icon.png" alt="Logo Placar" class="logo-img" width="44" height="44">
             <span class="logo-text">Placar</span>
         </a>
         <ul class="nav-links">
             <li><a href="#recursos">Recursos</a></li>
             <li><a href="#como-funciona">Como Funciona</a></li>
-            <li><a href="privacy.html" class="nav-btn">Política de Privacidade</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.gfsolutions.placar" target="_blank" rel="noopener noreferrer" class="nav-btn">Baixar na Play Store</a></li>
         </ul>
     </nav>
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
             <div class="badge-new">
-                <span>✦ Versão 0.1.0 Disponível</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 5V2M9 2h6"/><path d="M12 19v3M9 22h6"/><path d="M5 12H2M2 9v6"/><path d="M19 12h3M22 9v6"/></svg>
+                <span>Controle por Bluetooth · inclusive smartwatch</span>
             </div>
             <h1>Placar Remoto.<br>Controle Inteligente Sem Fios.</h1>
-            <p class="hero-desc">O marcador de pontuação moderno e multiplataforma controlado por Bluetooth e com narração por voz inteligente integrada para qualquer partida esportiva.</p>
+            <p class="hero-desc">O marcador de pontuação moderno e multiplataforma, com narração por voz e controle Bluetooth — use um controle portátil ou o <strong style="color:#fff;">smartwatch no pulso</strong> para marcar pontos sem olhar para o celular.</p>
             <div class="hero-ctas">
-                <a href="#como-funciona" class="btn btn-primary">
+                <a href="https://play.google.com/store/apps/details?id=com.gfsolutions.placar" class="btn btn-playstore" target="_blank" rel="noopener noreferrer">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.2-.5.6-.5 1v17.4c0 .4.2.8.5 1l.1.1 9.6-9.6v-.2L3.7 2.2l-.1.1zm12.1 7L13 7.6 4.6 3.4l9.6 9.6 1.5-1.5c.5-.5.5-1.2 0-1.7zM4.6 20.6l8.4-4.2 2.7-2.7-9.6-9.6v16.5zm14.2-7.1l-2.2 1.2-2.5 2.5 2.5 2.5 2.2 1.2c.8.4 1.8-.1 1.8-1.1v-5.2c0-1-.9-1.5-1.8-1.1z"/></svg>
+                    Baixar na Play Store
+                </a>
+                <a href="#como-funciona" class="btn btn-secondary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     Ver Como Funciona
                 </a>
-                <a href="https://geanferreira96.github.io/placar-mirrror/privacy.html" class="btn btn-secondary">Política de Privacidade</a>
+            </div>
+            <div class="smartwatch-highlight">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><rect x="6" y="4" width="12" height="16" rx="3"/><path d="M9 2h6M9 22h6"/><circle cx="12" cy="12" r="2.5"/></svg>
+                <div>
+                    <strong>Smartwatch como controle remoto</strong>
+                    <span>Qualquer relógio com botões Bluetooth (media keys) pode somar pontos e pausar o cronômetro — sem tirar o celular do bolso.</span>
+                </div>
             </div>
         </div>
         <!-- Interactive Scoreboard Mockup -->
@@ -644,13 +771,13 @@
         </div>
         
         <div class="features-grid">
-            <!-- Feature 1: Bluetooth -->
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5-5 5M19 7l-5 5 5 5M12 7v10"/></svg>
+            <!-- Feature 1: Bluetooth / Smartwatch -->
+            <div class="feature-card featured">
+                <div class="feature-icon watch">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="3"/><path d="M9 2h6M9 22h6"/><circle cx="12" cy="12" r="2.5"/></svg>
                 </div>
-                <h3>Controle BT de 3 Botões</h3>
-                <p>Compatível com pequenos controles remotos Bluetooth portáteis. Permite somar pontos e gerenciar o cronômetro diretamente de qualquer lugar da quadra.</p>
+                <h3>Bluetooth: controle ou smartwatch</h3>
+                <p>Compatível com controles remotos de 3 botões e também com smartwatches que enviam comandos Bluetooth. Marque pontos e gerencie o cronômetro direto do pulso, de qualquer lugar da quadra.</p>
             </div>
             <!-- Feature 2: TTS -->
             <div class="feature-card">
@@ -689,8 +816,8 @@
                 <div class="step">
                     <div class="step-num">1</div>
                     <div class="step-content">
-                        <h4>Pareie o Controle Bluetooth</h4>
-                        <p>Conecte o seu controle portátil (como um acionador de selfie de 3 botões) nas configurações de Bluetooth do seu dispositivo.</p>
+                        <h4>Pareie o Controle ou Smartwatch</h4>
+                        <p>Conecte um controle portátil de 3 botões ou um smartwatch com comandos Bluetooth nas configurações do seu dispositivo.</p>
                     </div>
                 </div>
                 <div class="step">
@@ -704,7 +831,7 @@
                     <div class="step-num">3</div>
                     <div class="step-content">
                         <h4>Foque na Partida</h4>
-                        <p>Use os botões físicos do controle remoto para alterar o placar, enquanto o áudio anuncia o andamento do jogo automaticamente.</p>
+                        <p>Use os botões do controle ou do smartwatch no pulso para alterar o placar, enquanto o áudio anuncia o andamento do jogo automaticamente.</p>
                     </div>
                 </div>
             </div>
@@ -712,13 +839,19 @@
             <div class="bt-visual-container">
                 <div class="bt-wave"></div>
                 <div class="bt-wave bt-wave-2"></div>
-                <div class="bt-device-remote" style="margin-right: 1.5rem;">
-                    <button class="remote-btn" onclick="animatePress(this, 'prev')"></button>
-                    <button class="remote-btn remote-btn-main" onclick="animatePress(this, 'main')"></button>
-                    <button class="remote-btn" onclick="animatePress(this, 'next')"></button>
+                <div class="devices-row">
+                    <div class="watch-mockup" title="Smartwatch">
+                        <div class="watch-screen">BT</div>
+                    </div>
+                    <div class="bt-device-remote">
+                        <button class="remote-btn" onclick="animatePress(this, 'prev')"></button>
+                        <button class="remote-btn remote-btn-main" onclick="animatePress(this, 'main')"></button>
+                        <button class="remote-btn" onclick="animatePress(this, 'next')"></button>
+                    </div>
                 </div>
-                <div class="phone-mockup">
-                    <div style="color: #6366f1; font-weight: bold; font-size: 0.9rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.25rem;">
+                <div class="phone-mockup" style="margin-left: 1.5rem;">
+                    <img src="assets/icon.png" alt="Placar" width="40" height="40" style="border-radius:10px;margin-bottom:0.75rem;">
+                    <div style="color: #34d399; font-weight: bold; font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.25rem;">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5-5 5M19 7l-5 5 5 5M12 7v10"/></svg>
                         BT CONECTADO
                     </div>
@@ -734,12 +867,11 @@
     <footer>
         <div class="footer-content">
             <a href="#" class="logo">
-                <div class="logo-box">
-                    <span class="logo-text" style="font-size: 1.25rem; font-weight: 800;">P</span>
-                </div>
+                <img src="assets/icon.png" alt="Logo Placar" class="logo-img" width="44" height="44">
                 <span class="logo-text">Placar</span>
             </a>
             <div class="footer-links">
+                <a href="https://play.google.com/store/apps/details?id=com.gfsolutions.placar" target="_blank" rel="noopener noreferrer">Play Store</a>
                 <a href="#recursos">Recursos</a>
                 <a href="#como-funciona">Como Funciona</a>
                 <a href="privacy.html">Política de Privacidade</a>
