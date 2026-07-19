@@ -1,5 +1,16 @@
 # Changelog — Placar
 
+## Não publicado (em desenvolvimento)
+
+### Novidades
+
+- **Histórico enriquecido (local-first):** GPS capturado no início da partida (se permitido) e foto opcional adicionada depois no histórico.
+- **Strava opcional:** conectar conta na aba Sobre; selecionar várias partidas e publicar um único Workout no Strava. Sem conectar, o app segue 100% offline.
+
+### Privacidade
+
+- Política atualizada: localização em uso, fotos locais e Strava apenas sob demanda.
+
 ## Versão 0.3.1
 
 ### Novidades

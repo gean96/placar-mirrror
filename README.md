@@ -31,8 +31,8 @@ Acompanhe os resultados das rodadas anteriores com o registro automático das pa
 
 Nós acreditamos na privacidade dos seus dados. O Placar foi construído utilizando a filosofia **Local-First**:
 *   **Zero Coleta de Dados:** Não exigimos criação de contas, login ou fornecimento de e-mails para o uso do aplicativo.
-*   **100% Off-line:** O aplicativo não se conecta a servidores externos nem transmite seus dados de uso. Tudo é processado e armazenado de forma estrita e segura no seu próprio dispositivo.
-*   **Permissões Transparentes:** Apenas solicitamos acesso ao Bluetooth e áudio para execução das ferramentas do app.
+*   **100% Off-line por padrão:** O placar e o histórico funcionam sem rede. A conexão com a internet só ocorre se você optar por recursos como publicar no Strava.
+*   **Permissões Transparentes:** Bluetooth e áudio para o placar; localização em uso e fotos para enriquecer o histórico local; internet apenas no opt-in do Strava.
 
 A nossa política de privacidade completa está disponível em formato público [aqui](privacy.html).
 

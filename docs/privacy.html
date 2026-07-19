@@ -349,7 +349,7 @@
                     <h2>1. Visão Geral</h2>
                 </div>
                 <p>Esta Política de Privacidade descreve como o aplicativo <strong>Placar</strong> ("nós", "nosso" ou "o Aplicativo"), desenvolvido por <strong>Gean Ferreira</strong>, trata as informações dos usuários. O Placar é um aplicativo de controle de placar eletrônico remoto, projetado para operar localmente em seu dispositivo.</p>
-                <p>Nós valorizamos a sua privacidade. Por essa razão, o Placar foi desenvolvido sob o princípio de <strong>coleta mínima de dados</strong>. O aplicativo funciona perfeitamente de forma off-line e local, sem a necessidade de criar contas ou transmitir dados pessoais para servidores externos.</p>
+                <p>Nós valorizamos a sua privacidade. Por essa razão, o Placar foi desenvolvido sob o princípio de <strong>coleta mínima de dados</strong>. O aplicativo funciona perfeitamente de forma off-line e local, sem a necessidade de criar contas Placar. Recursos como Strava são <strong>opcionais</strong> e só enviam dados se você autorizar explicitamente.</p>
             </section>
             <section>
                 <div class="section-title-wrapper">
@@ -358,11 +358,12 @@
                     </div>
                     <h2>2. Coleta e Uso de Informações</h2>
                 </div>
-                <p><strong>Não coletamos, armazenamos ou compartilhamos qualquer dado pessoal ou identificável do usuário.</strong></p>
-                <p>Qualquer informação gerada pelo uso do aplicativo permanece estritamente no seu dispositivo:</p>
+                <p><strong>Não exigimos conta Placar e não coletamos dados para publicidade ou analytics.</strong></p>
+                <p>Qualquer informação gerada pelo uso do aplicativo permanece, por padrão, no seu dispositivo:</p>
                 <ul>
-                    <li><strong>Histórico de Partidas:</strong> Os dados de pontuações, partidas e estatísticas do placar são salvos unicamente na memória local do seu aparelho (em formato JSON) e não são enviados a nenhuma nuvem ou banco de dados externo. Você pode limpar ou excluir esses dados a qualquer momento desinstalando o aplicativo ou limpando o armazenamento nas configurações do sistema.</li>
+                    <li><strong>Histórico de Partidas:</strong> Os dados de pontuações, partidas, localização opcional e fotos opcionais são salvos na memória local do aparelho (JSON + arquivos de imagem) e não são enviados a nenhuma nuvem própria do Placar. Você pode limpar esses dados a qualquer momento no app, desinstalando o aplicativo ou limpando o armazenamento nas configurações do sistema.</li>
                     <li><strong>Configurações de Preferência:</strong> Opções personalizadas, como velocidade de fala, tom de voz do recurso de áudio e configurações de foco de mídia, são gravadas localmente no arquivo de configurações do aplicativo em seu dispositivo.</li>
+                    <li><strong>Strava (opt-in):</strong> somente se você conectar a conta e publicar partidas, um resumo textual é enviado à API do Strava. Tokens OAuth ficam no aparelho.</li>
                 </ul>
             </section>
             <section>
@@ -372,7 +373,7 @@
                     </div>
                     <h2>3. Permissões Requeridas pelo Dispositivo</h2>
                 </div>
-                <p>Para fornecer a experiência completa de controle e narração do placar, o Aplicativo pode solicitar acesso a determinados recursos do seu dispositivo. Estas permissões são utilizadas exclusivamente para o funcionamento das ferramentas locais:</p>
+                <p>Para fornecer a experiência completa de controle e narração do placar, o Aplicativo pode solicitar acesso a determinados recursos do seu dispositivo. Estas permissões são utilizadas exclusivamente para o funcionamento das ferramentas locais (e, quando você optar, para recursos opcionais):</p>
                 
                 <div class="grid-permissions">
                     <div class="permission-card">
@@ -395,14 +396,28 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
                             <span>Armazenamento Local</span>
                         </div>
-                        <p>Permite salvar o histórico das suas partidas e as configurações locais do aplicativo diretamente no armazenamento interno privado do app.</p>
+                        <p>Permite salvar o histórico das suas partidas, fotos opcionais e as configurações locais do aplicativo diretamente no armazenamento interno privado do app.</p>
+                    </div>
+                    <div class="permission-card">
+                        <div class="permission-header">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Localização (em uso)</span>
+                        </div>
+                        <p>Quando concedida, o app pode registrar a localização GPS no <strong>início da partida</strong> para enriquecer o histórico local. Não há rastreamento contínuo nem localização em segundo plano. Se você negar a permissão, o placar continua funcionando normalmente.</p>
+                    </div>
+                    <div class="permission-card">
+                        <div class="permission-header">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            <span>Fotos / Galeria</span>
+                        </div>
+                        <p>Usada apenas quando você escolhe <strong>adicionar uma foto</strong> a uma partida já encerrada no histórico. As imagens ficam no aparelho; o app não envia fotos automaticamente para a internet.</p>
                     </div>
                     <div class="permission-card">
                         <div class="permission-header">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11.03a6.48 6.48 0 0 0-10.95-4.57M6 12.97a6.48 6.48 0 0 0 10.95 4.57M12 5v14M5 12h14"/></svg>
-                            <span>Estado da Rede</span>
+                            <span>Internet (opcional)</span>
                         </div>
-                        <p>Se executado em formato web ou para verificar atualizações, o aplicativo pode verificar se há conectividade ativa, mas não transmite dados de uso.</p>
+                        <p>Necessária somente se você optar por conectar e publicar no Strava. Sem essa conexão, o aplicativo permanece plenamente utilizável offline.</p>
                     </div>
                 </div>
             </section>
@@ -413,7 +428,9 @@
                     </div>
                     <h2>4. Serviços de Terceiros</h2>
                 </div>
-                <p>O aplicativo Placar não inclui códigos de SDKs de terceiros para publicidade direcionada, rastreamento de localização em segundo plano ou analytics invasivos. Por ser uma ferramenta offline e focada no controle direto de hardware via Bluetooth, não há compartilhamento de informações com outras empresas ou parceiros comerciais.</p>
+                <p>O aplicativo Placar <strong>não</strong> inclui SDKs de publicidade direcionada, analytics invasivos ou rastreamento de localização em segundo plano.</p>
+                <p><strong>Strava (opcional):</strong> se você escolher conectar sua conta Strava, o Placar poderá publicar um resumo de uma ou mais partidas como atividade manual no Strava, usando a API oficial após autorização OAuth. Tokens de acesso ficam armazenados de forma segura no seu dispositivo. Você pode desconectar a qualquer momento na aba Sobre. Quem nunca conectar o Strava não envia dados a esse serviço.</p>
+                <p>Fora desse opt-in, o histórico e as fotos permanecem locais e não são compartilhados com empresas ou parceiros comerciais.</p>
             </section>
             <section>
                 <div class="section-title-wrapper">
