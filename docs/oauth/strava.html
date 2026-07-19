@@ -38,17 +38,26 @@
       border-radius: 10px;
     }
     .err { color: #f87171; }
+    .hint {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 18px;
+      text-align: left;
+      line-height: 1.45;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Placar × Strava</h1>
-                    <p id="msg">Concluindo autorização…</p>
+    <p id="msg">Concluindo autorização…</p>
     <p><a class="btn" id="openApp" href="#">Abrir no Placar</a></p>
-    <p style="font-size:0.85rem;color:#6b7280;margin-top:20px">
-      No <strong>celular</strong>, o botão acima devolve o login ao app.<br>
-      No <strong>Windows/PC</strong>, use “Conectar Strava” pelo próprio Placar —
-      o navegador volta automaticamente via localhost (não use esta página).
+    <p class="hint">
+      No <strong>celular</strong>, use o botão acima para devolver o login ao app
+      que você abriu (evite o Chrome / Placar com ícone de <strong>Dual App</strong> /
+      app clonado — eles são outra instância e não compartilham a conexão).<br><br>
+      No <strong>Windows/PC</strong>, conecte pelo próprio Placar —
+      o navegador volta via localhost (não use esta página).
     </p>
   </div>
   <script>
@@ -60,6 +69,7 @@
       var state = params.get("state") || "";
       var msg = document.getElementById("msg");
       var link = document.getElementById("openApp");
+      var PKG = "com.gfsolutions.placar";
 
       if (err) {
         msg.className = "err";
@@ -74,14 +84,30 @@
         return;
       }
 
-      var deep =
-        "placar://oauth?code=" + encodeURIComponent(code) +
+      var qs =
+        "code=" + encodeURIComponent(code) +
         "&scope=" + encodeURIComponent(scope) +
         "&state=" + encodeURIComponent(state);
-      link.href = deep;
+      var deep = "placar://oauth?" + qs;
+      // Prefer explicit package so Android opens Placar (not a random handler).
+      // Dual App still needs the browser session to be in the same user profile.
+      var intentUrl =
+        "intent://oauth?" + qs +
+        "#Intent;scheme=placar;package=" + PKG +
+        ";S.browser_fallback_url=" + encodeURIComponent(deep) +
+        ";end";
+
+      link.href = intentUrl;
       msg.textContent = "Autorização recebida. Tocando para voltar ao Placar…";
-      // Auto-redirect into the app
-      window.location.replace(deep);
+
+      function tryOpen() {
+        window.location.href = intentUrl;
+        setTimeout(function () {
+          // Fallback for browsers that ignore intent://
+          window.location.href = deep;
+        }, 700);
+      }
+      tryOpen();
     })();
   </script>
 </body>
