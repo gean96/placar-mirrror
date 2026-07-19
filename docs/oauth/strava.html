@@ -38,13 +38,6 @@
       border-radius: 10px;
     }
     .err { color: #f87171; }
-    .hint {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-top: 18px;
-      text-align: left;
-      line-height: 1.45;
-    }
   </style>
 </head>
 <body>
@@ -52,12 +45,11 @@
     <h1>Placar × Strava</h1>
     <p id="msg">Concluindo autorização…</p>
     <p><a class="btn" id="openApp" href="#">Abrir no Placar</a></p>
-    <p class="hint">
-      No <strong>celular</strong>, use o botão acima para devolver o login ao app
-      que você abriu (evite o Chrome / Placar com ícone de <strong>Dual App</strong> /
-      app clonado — eles são outra instância e não compartilham a conexão).<br><br>
-      No <strong>Windows/PC</strong>, conecte pelo próprio Placar —
-      o navegador volta via localhost (não use esta página).
+    <p style="font-size:0.85rem;color:#6b7280;margin-top:20px">
+      No <strong>celular</strong>, o botão acima devolve o login ao app já aberto.<br>
+      Se abrir outra janela do Placar, feche-a e toque de novo em “Abrir no Placar”.<br>
+      No <strong>Windows/PC</strong>, use “Conectar Strava” pelo próprio Placar —
+      o navegador volta automaticamente via localhost (não use esta página).
     </p>
   </div>
   <script>
@@ -69,7 +61,7 @@
       var state = params.get("state") || "";
       var msg = document.getElementById("msg");
       var link = document.getElementById("openApp");
-      var PKG = "com.gfsolutions.placar";
+      var PACKAGE = "com.gfsolutions.placar";
 
       if (err) {
         msg.className = "err";
@@ -88,26 +80,29 @@
         "code=" + encodeURIComponent(code) +
         "&scope=" + encodeURIComponent(scope) +
         "&state=" + encodeURIComponent(state);
+      // Custom scheme fallback (iOS / older Android / non-Chrome)
       var deep = "placar://oauth?" + qs;
-      // Prefer explicit package so Android opens Placar (not a random handler).
-      // Dual App still needs the browser session to be in the same user profile.
-      var intentUrl =
+      // Prefer Android intent with explicit package so the OS opens this app's
+      // existing task instead of a second instance.
+      var intent =
         "intent://oauth?" + qs +
-        "#Intent;scheme=placar;package=" + PKG +
-        ";S.browser_fallback_url=" + encodeURIComponent(deep) +
-        ";end";
+        "#Intent;scheme=placar;package=" + PACKAGE + ";end";
 
-      link.href = intentUrl;
+      var isAndroid = /Android/i.test(navigator.userAgent || "");
+      var primary = isAndroid ? intent : deep;
+      link.href = primary;
       msg.textContent = "Autorização recebida. Tocando para voltar ao Placar…";
 
-      function tryOpen() {
-        window.location.href = intentUrl;
-        setTimeout(function () {
-          // Fallback for browsers that ignore intent://
-          window.location.href = deep;
-        }, 700);
+      function go() {
+        window.location.replace(primary);
+        // If intent fails silently, retry custom scheme shortly after
+        if (isAndroid && primary !== deep) {
+          setTimeout(function () {
+            window.location.href = deep;
+          }, 1200);
+        }
       }
-      tryOpen();
+      go();
     })();
   </script>
 </body>
